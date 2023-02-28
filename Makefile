@@ -14,7 +14,6 @@ install:
 infra-init:
 	docker run --rm -it -v $(shell pwd)/terraform:/data -w /data --env-file .env hashicorp/terraform init
 	docker run --rm -it -v $(shell pwd)/terraform:/data -w /data --env-file .env hashicorp/terraform apply
-	python redshift/init.py
 
 infra-run:
 	docker run --rm -it -v $(shell pwd)/terraform:/data -w /data --env-file .env hashicorp/terraform $(command)
