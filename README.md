@@ -1,6 +1,6 @@
 # Description
 
-This project extracts data from Fitbit's API (activity & sleep) and analyses it. 
+This project extracts data from Fitbit's API and prepares it for anlysis. The tracked data includes intraday activity data (steps, distance & hearbeat) and daily sleep data.
 
 The primary component is a daily batch processing pipeline that authenticates and pulls user data from the fitbit API, before creating an analytics-ready data set in AWS. Example dashboards are shown below but creating the visualisation layer is not part of this repository and is instead left to the user.
 
@@ -41,13 +41,15 @@ The pipeline runs on a daily basis and is orchestrated by Prefect. The pipeline 
 
 The visualisation, done in Tableau, is indicative and not part of this repository.
 
--   Looker Studo
+-   Tableau
 
 # Dashboard
 
 To give an indication of the type of analysis that can be done with the data, a sample dashboard was created in Tableau. The dashboard is not part of this repository.
 
 **Analysis of Active Zones**
+
+The pipeline tracks step, distance and heartbeat data at 15 minute intervals. The data collected across multiple days can be used to track times of day where the user is most active.
 
 
 <p align="center">
@@ -56,6 +58,7 @@ To give an indication of the type of analysis that can be done with the data, a 
 
 **Analysis of Sleep Quality**
 
+A daily sleep score based on the amount of time asleep, sleep efficiency and % REM / Deep sleep is calculated in DBT. Fitbit's own sleep score is proprietary and not available through the API. The sleep score uses the sleep target set in the Fitbit app as part of this calculation.
 
 <p align="center">
   <img src="https://github.com/cjbraley/fitbit_pipeline/raw/master/demo/sleep.png?raw=true" />
