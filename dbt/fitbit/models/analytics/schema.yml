@@ -1,0 +1,144 @@
+version: 2
+
+models:
+    - name: intraday_activities
+      description: >
+          Contains intraday data collected from fitbit API. Granularity is date + time
+      columns:
+          - name: activity_datetime
+            description: The timestamp that the record relates to
+            tests:
+                - not_null:
+                      severity: warn
+          - name: activity_date
+            description: The date that the record relates to
+            tests:
+                - not_null:
+                      severity: warn
+          - name: steps
+            description: The number of steps taken by the subject
+            tests:
+                - not_null:
+                      severity: warn
+          - name: heartbeat
+            description: The subject's heartrate
+            tests:
+                - not_null:
+                      severity: warn
+          - name: distance_meters
+            description: The distance travelled by the subject in meters
+            tests:
+                - not_null:
+                      severity: warn
+
+    - name: daily_activities
+      description: >
+          Contains day level summary results. Some of these are aggregated from intraday results
+      columns:
+          - name: activity_date
+            description: The date that the record relates to
+            tests:
+                - not_null:
+                      severity: warn
+          - name: total_steps
+            description: The number of steps taken by the subject
+            tests:
+                - not_null:
+                      severity: warn
+          - name: max_heartbeat
+            description: The subject's heartrate
+            tests:
+                - not_null:
+                      severity: warn
+          - name: total_distance_meters
+            description: The distance travelled by the subject in meters
+            tests:
+                - not_null:
+                      severity: warn
+
+
+    - name: daily_sleep
+      description: >
+          Contains daily sleep date collected from fitbit API.
+      columns:
+          - name: activity_date
+            description: The date that the record relates to
+            tests:
+                - not_null:
+                      severity: warn
+          - name: sleep_start_time
+            description: The time when sleep began
+            tests:
+                - not_null:
+                      severity: warn
+          - name: sleep_end_time
+            description: The time when sleep ended
+            tests:
+                - not_null:
+                      severity: warn
+          - name: bed_time_goal
+            description: The target bedtime used in the fitbit app
+            tests:
+                - not_null:
+                      severity: warn
+          - name: sleep_minutes_goal
+            description: The target amount of sleep time used in the fitbit app
+            tests:
+                - not_null:
+                      severity: warn
+          - name: minutes_to_fall_asleep
+            description: The amount of minutes taken to fall asleep
+            tests:
+                - not_null:
+                      severity: warn
+          - name: deep_sleep_minutes
+            description: The number of minutes in deep sleep
+            tests:
+                - not_null:
+                      severity: warn
+          - name: rem_sleep_minutes
+            description: The number of minutes in rem sleep
+            tests:
+                - not_null:
+                      severity: warn
+          - name: light_sleep_minutes
+            description: The number of minutes in light sleep
+            tests:
+                - not_null:
+                      severity: warn
+          - name: awake_minutes
+            description: The number of minutes awake
+            tests:
+                - not_null:
+                      severity: warn
+          - name: in_bed_minutes
+            description: The number of minutes spent in bed
+            tests:
+                - not_null:
+                      severity: warn
+          - name: score_sleep_efficiency
+            description: The sleep efficiency score. Time asleep / Time in bed * 100
+            tests:
+                - not_null:
+                      severity: warn
+          - name: score_sleep_amount
+            description: The sleep amount score. What proportion of sleep amount target met (max 100)
+            tests:
+                - not_null:
+                      severity: warn
+          - name: score_deep_percent
+            description: The deep sleep percent score. What proportion of the target proportion was achieved (max 100)
+            tests:
+                - not_null:
+                      severity: warn
+          - name: score_rem_percent
+            description: The rem sleep percent score. What proportion of the target proportion was achieved (max 100)
+            tests:
+                - not_null:
+                      severity: warn
+          - name: score_sleep_total
+            description: The aggregate sleep score based on weighted avg of the otehr scores (max 100)
+            tests:
+                - not_null:
+                      severity: warn
+                  

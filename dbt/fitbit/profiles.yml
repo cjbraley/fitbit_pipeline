@@ -1,0 +1,25 @@
+fitbit:
+    target: prod
+    outputs:
+        prod:
+            type: redshift
+            host: "{{ env_var('REDSHIFT_CLUSTER_HOST') }}"
+            port: "{{ env_var('REDSHIFT_CLUSTER_PORT') | as_number }}"
+            dbname: "{{ env_var('TF_VAR_REDSHIFT_DATABASE_NAME') }}"
+            schema: "{{ env_var('REDSHIFT_SCHEMA_ANALYTICS') }}"
+            user: "{{ env_var('TF_VAR_REDSHIFT_ADMIN_USER') }}"
+            password: "{{ env_var('TF_VAR_REDSHIFT_PW') }}"
+            threads: 1
+            keepalives_idle: 0
+        dev:
+            type: redshift
+            host: "{{ env_var('REDSHIFT_CLUSTER_HOST') }}"
+            port: "{{ env_var('REDSHIFT_CLUSTER_PORT') | as_number }}"
+            dbname: "{{ env_var('TF_VAR_REDSHIFT_DATABASE_NAME') }}"
+            schema: analytics_dev
+            user: "{{ env_var('TF_VAR_REDSHIFT_ADMIN_USER') }}"
+            password: "{{ env_var('TF_VAR_REDSHIFT_PW') }}"
+            threads: 1
+            keepalives_idle: 0
+
+            

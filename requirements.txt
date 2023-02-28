@@ -1,0 +1,10 @@
+python-dotenv==1.0.0
+prefect==2.8.0
+prefect-shell==0.1.5
+fitbit==0.3.1
+cherrypy==18.8.0
+pandas==1.5.3
+pyarrow==11.0.0
+psycopg2==2.9.5
+boto3==1.26.81
+sqlalchemy==1.4.46
